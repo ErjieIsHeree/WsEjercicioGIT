@@ -53,9 +53,10 @@ public class Usuario {
 			}
 
 		}
+		//Hola Soy Luis
 		return notas_mayores;
 	}
-	
+	//Somos una cagada
 	public boolean devolverMayorOMenorMediaValoracion(double nota) {
 		double media = this.devolverValoracionMedia();
 		
@@ -65,7 +66,7 @@ public class Usuario {
 		}
 		return flag;
 	}
-	
+	//Se puede con lo que se tiene
 	public boolean devolverMayorOMenorMediaValoracionTernario(double nota) {
 		return (nota>this.devolverValoracionMedia())?true:false;
 	}
