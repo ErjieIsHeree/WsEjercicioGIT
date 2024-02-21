@@ -1,11 +1,15 @@
 package actividades;
 
-public class Usuario {
+import java.util.Arrays;
 
+public class Usuario {
+	
+	// Atributos
 	String id;
 	String nombre;
 	double valoraciones[];
 	
+	// Constructores
 	public Usuario() {
 		super();
 	}
@@ -15,26 +19,24 @@ public class Usuario {
 		this.nombre = nombre;
 		this.valoraciones = valoraciones;
 	}
+	// Metodos
 	
-	public int devolverCantValoracionesSuperioresa(int numero) {
-		int cantSup = 0;
-		for(int i = 0; i < this.valoraciones.length; i++) {
-			if(numero < this.valoraciones[i]) {
-				cantSup++;
-			}
-		}
-		return cantSup;
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nombre=" + nombre + ", valoraciones=" + Arrays.toString(valoraciones) + "]";
 	}
-
-	public boolean devolverSuperaMedia(int numero) {
-		boolean esMayorMedia = false;
-		if(numero < devolverMediaValoraciones() ) {
-			esMayorMedia = true;
+	
+	public double devolverValoracionMedia() {
+		double media = 0;
+		double suma = 0;
+		for(int i = 0; i<this.valoraciones.length;i++) {
+			suma += this.valoraciones[i];
 		}
-		return esMayorMedia;
+		media = suma/this.valoraciones.length;
+		return media;
+		
 	}
-
-public void motrarValoraciones() {
+	public void motrarValoraciones() {
 		
 		for(int i = 0;i < this.valoraciones.length ;i++) {
 			System.out.println("Lista de valoraciones");
@@ -53,5 +55,20 @@ public void motrarValoraciones() {
 		}
 		return notas_mayores;
 	}
+	
+	public boolean devolverMayorOMenorMediaValoracion(double nota) {
+		double media = this.devolverValoracionMedia();
+		
+		boolean flag = false;
+		if (nota>media) {
+			flag= true;
+		}
+		return flag;
+	}
+	
+	public boolean devolverMayorOMenorMediaValoracionTernario(double nota) {
+		return (nota>this.devolverValoracionMedia())?true:false;
+	}
+		
 	
 }
